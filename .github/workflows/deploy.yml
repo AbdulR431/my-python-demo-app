@@ -24,10 +24,8 @@ jobs:
           mkdir -p ${{ secrets.DEPLOY_PATH }}
         EOF
 
-        scp -o StrictHostKeyChecking=no -r
-        my-python-app \
+        scp -o StrictHostKeyChecking=no -r my-python-app \
         ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:${{ secrets.DEPLOY_PATH }}
-
 
     - name: Run Docker Compose on EC2
       run: |
